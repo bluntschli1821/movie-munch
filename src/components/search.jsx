@@ -6,6 +6,7 @@ export const Search = ({ searchTerm, setSearchTerm }) => {
       <div>
         <img src="/search.svg" alt="Search Icon" />
         <input
+          id="search"
           type="text"
           placeholder="Search through movies"
           value={searchTerm}
