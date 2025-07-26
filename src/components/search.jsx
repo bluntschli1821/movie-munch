@@ -5,7 +5,12 @@ export const Search = ({ searchTerm, setSearchTerm }) => {
     <div className="search">
       <div>
         <img src="/search.svg" alt="Search Icon" />
-        <input />
+        <input
+          type="text"
+          placeholder="Search through movies"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
       </div>
     </div>
   );

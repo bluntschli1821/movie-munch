@@ -1,8 +1,22 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { Search } from "./components/search";
 
 const App = () => {
-  const [searchTerm, setSearchTerm] = useState("Many");
+  const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/search/movie?api_key=${import.meta.env.VITE_TMDB_API_KEY}&query=${searchTerm}`
+      );
+      const data = await response.json();
+      console.log(data);
+    };
+
+    if (searchTerm) {
+      fetchData();
+    }
+  }, [searchTerm]);
 
   return (
     <main>
@@ -18,6 +32,8 @@ const App = () => {
         </header>
 
         <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+
+         
       </div>
     </main>
   );
